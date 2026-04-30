@@ -24,6 +24,9 @@
                 <a href="{% url 'dashboard:index' %}" class="nav-link {% if request.resolver_match.app_name == 'dashboard' %}active{% endif %}">
                     <i class="bi bi-speedometer2"></i> 仪表盘
                 </a>
+                <a href="{% url 'members:member_list' %}" class="nav-link {% if request.resolver_match.app_name == 'members' %}active{% endif %}">
+                    <i class="bi bi-person-vcard"></i> 注册人员
+                </a>
                 {% if user.is_superuser %}
                 <a href="{% url 'accounts:user_list' %}" class="nav-link {% if request.resolver_match.url_name == 'user_list' %}active{% endif %}">
                     <i class="bi bi-people"></i> 用户管理

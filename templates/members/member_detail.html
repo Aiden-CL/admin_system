@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}{{ member.name }} - 人员详情{% endblock %}
+
+{% block content %}
+<div class="page-header d-flex justify-content-between align-items-center">
+    <h2><i class="bi bi-person-vcard"></i> 人员详情</h2>
+    <div>
+        <a href="{% url 'members:member_update' member.pk %}" class="btn btn-primary">
+            <i class="bi bi-pencil"></i> 编辑
+        </a>
+        <a href="{% url 'members:member_list' %}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> 返回列表
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card form-card">
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-3">姓名</dt>
+                    <dd class="col-sm-9">{{ member.name }}</dd>
+
+                    <dt class="col-sm-3">手机号</dt>
+                    <dd class="col-sm-9">{{ member.phone }}</dd>
+
+                    <dt class="col-sm-3">性别</dt>
+                    <dd class="col-sm-9">{{ member.get_gender_display|default:"-" }}</dd>
+
+                    <dt class="col-sm-3">身份证号</dt>
+                    <dd class="col-sm-9">{{ member.id_number|default:"-" }}</dd>
+
+                    <dt class="col-sm-3">邮箱</dt>
+                    <dd class="col-sm-9">{{ member.email|default:"-" }}</dd>
+
+                    <dt class="col-sm-3">地址</dt>
+                    <dd class="col-sm-9">{{ member.address|default:"-" }}</dd>
+
+                    <dt class="col-sm-3">出生日期</dt>
+                    <dd class="col-sm-9">{{ member.birthday|date:"Y-m-d"|default:"-" }}</dd>
+
+                    <dt class="col-sm-3">备注</dt>
+                    <dd class="col-sm-9">{{ member.remark|default:"-" }}</dd>
+
+                    <dt class="col-sm-3">注册时间</dt>
+                    <dd class="col-sm-9">{{ member.created_at|date:"Y-m-d H:i:s" }}</dd>
+
+                    <dt class="col-sm-3">更新时间</dt>
+                    <dd class="col-sm-9">{{ member.updated_at|date:"Y-m-d H:i:s" }}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
