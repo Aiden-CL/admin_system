@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block anonymous_content %}
+<div class="login-wrapper">
+    <div class="card login-card">
+        <div class="card-body">
+            <div class="login-icon">
+                <i class="bi bi-shield-lock"></i>
+            </div>
+            <h4 class="login-title">管理系统登录</h4>
+
+            {% if form.errors %}
+            <div class="alert alert-danger">
+                <i class="bi bi-exclamation-triangle"></i> 用户名或密码错误，请重试。
+            </div>
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="id_username" class="form-label">用户名</label>
+                    {{ form.username }}
+                </div>
+                <div class="mb-3">
+                    <label for="id_password" class="form-label">密码</label>
+                    {{ form.password }}
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-2">
+                    <i class="bi bi-box-arrow-in-right"></i> 登 录
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
